@@ -1,4 +1,4 @@
-PROBLEM=coke
+PROBLEM=quickestimate
 
 create:
 	mkdir --parents $(PROBLEM)
