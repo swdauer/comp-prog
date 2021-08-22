@@ -1,4 +1,4 @@
-PROBLEM=quickestimate
+PROBLEM=abc
 
 create:
 	mkdir --parents $(PROBLEM)
