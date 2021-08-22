@@ -1,6 +1,6 @@
 # comp-prog
 
-The purpose of this repository is to solve kattis problems in C.
+The purpose of this repository is to solve kattis problems.
 
 ## Layout
 
