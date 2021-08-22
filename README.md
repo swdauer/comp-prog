@@ -1,4 +1,4 @@
-# c-comp-prog
+# comp-prog
 
 The purpose of this repository is to solve kattis problems in C.
 
@@ -14,4 +14,4 @@ The purpose of this repository is to solve kattis problems in C.
 
 - each problem will be started on its own branch
 - each commit which is an accepted solution will be tagged with a name and number
-  - \<problemname\>.\<solutionnumber\>
+  - \<problemname\>.\<language\>.\<solutionnumber\>
