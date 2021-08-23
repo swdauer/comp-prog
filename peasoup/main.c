@@ -5,8 +5,8 @@
 #define PANCAKES "pancakes"
 #define PS_PAN_LENS 8
 #define UNSATISFIED "Anywhere is fine I guess\n"
-#define FLAG_PEA_SOUP 1      // turn on least significant bit as flag
-#define FLAG_PANCAKES 1 << 1 // turn on second to least significant bit as flag
+#define FLAG_PEA_SOUP 1      // least significant bit
+#define FLAG_PANCAKES 1 << 1 // second to least significant bit
 
 int main()
 {
@@ -15,9 +15,9 @@ int main()
   for (i = 0; i < n; i++)
   {
     int k, j;
-    char restaurant[101], flags = 0;
-    scanf(" %d", &k);
-    fgets(restaurant, 101, stdin);
+    char restaurant[102], flags = 0;
+    scanf(" %d\n", &k);
+    fgets(restaurant, 102, stdin);
     for (j = 0; j < k; j++)
     {
       char item[101];
@@ -44,7 +44,7 @@ int main()
 
       if (flags == (flags | FLAG_PANCAKES | FLAG_PEA_SOUP))
       {
-        printf("%s\n", restaurant);
+        printf("%s", restaurant);
         return 0;
       }
     }
