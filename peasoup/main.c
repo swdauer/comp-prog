@@ -20,9 +20,9 @@ int main()
     fgets(restaurant, 102, stdin);
     for (j = 0; j < k; j++)
     {
-      char item[101];
+      char item[102];
       int itemLen;
-      fgets(item, 101, stdin);
+      fgets(item, 102, stdin);
       itemLen = strlen(item);
       if (item[itemLen - 1] == '\n')
       {
