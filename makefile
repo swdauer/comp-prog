@@ -1,4 +1,4 @@
-PROBLEM=abc
+PROBLEM=peasoup
 
 create:
 	mkdir --parents $(PROBLEM)
