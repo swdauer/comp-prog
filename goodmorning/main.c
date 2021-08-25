@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct
 {
@@ -18,8 +19,33 @@ int adj8[] = {0, 8, 9};
 int adj9[] = {9};
 lenArray adjList[10];
 
+int possibleNums[200];
+int possibleNumsAlloc = 0;
+
+void createPossibles(int n)
+{
+  int i;
+
+  if (n > 200)
+    return;
+
+  possibleNums[possibleNumsAlloc++] = n;
+  for (i = 0; i < adjList[n % 10].len; i++)
+  {
+    createPossibles(n * 10 + adjList[n % 10].arr[i]);
+  }
+}
+
+int comparator(const void *x, const void *y)
+{
+  return *(int *)x - *(int *)y;
+}
+
 int main()
 {
+  int i;
+
+  // init adjList
   adjList[0].arr = adj0;
   adjList[0].len = 1;
   adjList[1].arr = adj1;
@@ -41,6 +67,10 @@ int main()
   adjList[9].arr = adj9;
   adjList[9].len = 1;
 
-  printf("%d %d\n", adjList[0].arr[0], adjList[2].arr[3]);
+  for (i = 1; i < 10; i++)
+  {
+    createPossibles(i);
+  }
+  qsort(possibleNums, possibleNumsAlloc, sizeof(int), comparator);
   return 0;
 }
