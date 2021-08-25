@@ -95,11 +95,11 @@ int main()
   }
   qsort(possibleNums, possibleNumsAlloc, sizeof(int), comparator);
 
-  for (i = 0; i < possibleNumsAlloc; i++)
+  /*for (i = 0; i < possibleNumsAlloc; i++)
   {
     printf("%d ", possibleNums[i]);
   }
-  printf("\n");
+  printf("\n");*/
 
   scanf(" %d", &n);
   for (i = 0; i < n; i++)
