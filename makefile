@@ -1,4 +1,4 @@
-PROBLEM=goodmorning
+PROBLEM=evenup
 
 create-c:
 	mkdir --parents $(PROBLEM)
