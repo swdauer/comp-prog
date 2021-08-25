@@ -1,3 +1,3 @@
-main.exe: main.hs
-	ghc -o main.exe main.hs
+main.exe: main.c
+	gcc -o main.exe main.c -lm
 	
