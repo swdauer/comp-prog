@@ -22,6 +22,7 @@ lenArray adjList[10];
 int possibleNums[200];
 int possibleNumsAlloc = 0;
 
+// graph traversal to find all possibilities
 void createPossibles(int n)
 {
   int i;
@@ -36,14 +37,35 @@ void createPossibles(int n)
   }
 }
 
+// for qsort
 int comparator(const void *x, const void *y)
 {
   return *(int *)x - *(int *)y;
 }
 
+int binarySearchForClosest(int n, int left, int right)
+{
+  int mid = (left + right) / 2;
+  if (possibleNums[mid] == n)
+    return n;
+  if (mid == left)
+  {
+    //printf("%d %d\n", possibleNums[left], possibleNums[right]);
+    if (possibleNums[right] - n < n - possibleNums[left])
+      return possibleNums[right];
+    else
+      return possibleNums[left];
+  }
+
+  if (n > possibleNums[mid])
+    return binarySearchForClosest(n, mid, right);
+  else
+    return binarySearchForClosest(n, left, mid);
+}
+
 int main()
 {
-  int i;
+  int i, n;
 
   // init adjList
   adjList[0].arr = adj0;
@@ -72,5 +94,19 @@ int main()
     createPossibles(i);
   }
   qsort(possibleNums, possibleNumsAlloc, sizeof(int), comparator);
+
+  for (i = 0; i < possibleNumsAlloc; i++)
+  {
+    printf("%d ", possibleNums[i]);
+  }
+  printf("\n");
+
+  scanf(" %d", &n);
+  for (i = 0; i < n; i++)
+  {
+    int num;
+    scanf(" %d", &num);
+    printf("%d\n", binarySearchForClosest(num, 0, possibleNumsAlloc - 1));
+  }
   return 0;
 }
