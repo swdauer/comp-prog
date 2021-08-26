@@ -1,4 +1,4 @@
-PROBLEM=evenup
+PROBLEM=combinationlock
 
 create-c:
 	mkdir --parents $(PROBLEM)
