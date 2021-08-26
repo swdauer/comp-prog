@@ -1,4 +1,4 @@
-PROBLEM=combinationlock
+PROBLEM=guessinggame
 
 create-c:
 	mkdir --parents $(PROBLEM)
