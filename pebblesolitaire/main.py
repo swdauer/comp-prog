@@ -12,6 +12,7 @@ def findMin(fringe):
     while True:
         try:
             currBoard = heapq.heappop(fringe)
+            print(currBoard)
             if currBoard[0] == 1:
                 return 1
             elif currBoard[0] < currMin:
@@ -21,24 +22,20 @@ def findMin(fringe):
             return currMin
 
 
+def replace3(s, index, repl):
+    return s[:index]+repl+s[index+3:]
+
+
 def pushNeighbors(fringe, board):
     for i, v in enumerate(board[1]):
         if v == 'o':
             # possible to move v left
-            if i > 1 and board[1][i-1] == 'o' and board[1][i-2] == '-':
-                # newBoard = board[1]  # .copy()
-                # newBoard[i] = '-'
-                # newBoard[i-1] = '-'
-                # newBoard[i-2] = 'o'
-                heapq.heappush(fringe,
-                               (board[0]-1, board[1][:i-2]+'o--'+board[1][i+1:]))
-            elif i < len(board[1])-2 and board[1][i+1] == 'o' and board[1][i+2] == '-':
-                # newBoard=board[1]  # .copy()
-                # newBoard[i]='-'
-                # newBoard[i+1]='-'
-                # newBoard[i+2]='o'
+            if i >= 2 and board[1][i-1] == 'o' and board[1][i-2] == '-':
                 heapq.heappush(
-                    fringe, (board[0]-1, board[1][:i]+'--o'+board[1][i+3:]))
+                    fringe, (board[0]-1, replace3(board[1], i-2, 'o--')))
+            if i <= len(board[1])-3 and board[1][i+1] == 'o' and board[1][i+2] == '-':
+                heapq.heappush(
+                    fringe, (board[0]-1, replace3(board[1], i, '--o')))
 
 
 if __name__ == '__main__':
@@ -47,5 +44,12 @@ if __name__ == '__main__':
     for board in boards:
         fringe = []
         heapq.heappush(fringe, (pebbleCount(board), board))
+        print("============")
+        print(board)
+        print("============")
         print(findMin(fringe))
-    # print(boards)
+    # print(boards[0])
+    # print(replace3(boards[0], 0, 'o--'))
+    # print(replace3(boards[0], len(boards[0])-3, 'o-o'))
+    # print(replace3(boards[0], 0, 'o--'))
+    # print(boards[0])

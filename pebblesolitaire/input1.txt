@@ -1,6 +1,2 @@
-5
----oo-------
--o--o-oo----
+1
 -o----ooo---
-oooooooooooo
-oooooooooo-o
