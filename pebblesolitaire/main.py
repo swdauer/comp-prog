@@ -12,7 +12,7 @@ def findMin(fringe):
     while True:
         try:
             currBoard = heapq.heappop(fringe)
-            print(currBoard)
+            # print(currBoard)
             if currBoard[0] == 1:
                 return 1
             elif currBoard[0] < currMin:
@@ -44,9 +44,9 @@ if __name__ == '__main__':
     for board in boards:
         fringe = []
         heapq.heappush(fringe, (pebbleCount(board), board))
-        print("============")
-        print(board)
-        print("============")
+        # print("============")
+        # print(board)
+        # print("============")
         print(findMin(fringe))
     # print(boards[0])
     # print(replace3(boards[0], 0, 'o--'))
