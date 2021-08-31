@@ -1,4 +1,4 @@
-PROBLEM=pebblesolitaire
+PROBLEM=calculatingdartscores
 
 create-c:
 	mkdir --parents $(PROBLEM)
