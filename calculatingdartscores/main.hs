@@ -20,7 +20,7 @@ isPossible :: Int -> Int -> [Dart] -> (Bool, [Dart])
 isPossible _ 0 _ = (True, [])
 isPossible x y darts | x == 3 = (False, [])
                      | outcome = 
-                     where (outcome, accum) = isPossible (x+1) 
+                     where (outcome, accum) = isPossible (x+1) -- NOT FINISHED
 
 generatePossScores :: [Dart]
 generatePossScores = (removeDups . quicksort) (map (\x -> ("single", x)) [1..20]
