@@ -1,4 +1,4 @@
-data Dart a b = Dart a b
+type Dart = (String, Int)
 
 main :: IO ()
 main = interact(writeOutput . solve . readInput)
@@ -6,36 +6,39 @@ main = interact(writeOutput . solve . readInput)
 readInput :: String -> Int
 readInput s = read s
 
-solve :: Int -> [Dart String Int]
-solve x = (Dart "test" x) : []
+solve :: Int -> (Bool, [Dart])
+solve x = ("test", x) : []
 
-writeOutput :: [Dart String Int] -> String
-writeOutput xs = (unlines . (map (\(Dart x y) -> (show x) ++ " " ++ (show y)))) xs
+writeOutput :: (Bool, [Dart]) -> String
+writeOutput (True, xs) = (unlines . (map (\(x, y) -> (show x) ++ " " ++ (show y)))) xs
+writeOutput (False, _) = "impossible\n"
 
--- generateSingleDarts :: [Dart String Int] -> [Int] -> [Dart String Int]
--- generateSingleDarts darts [] = darts 
--- generateSingleDarts darts (score:scores) = generateSingleDarts darts scores !! scores
+-- First Int is the dart num
+-- Second Int is the score wanted
+-- [Dart] is generatePossScores
+isPossible :: Int -> Int -> [Dart] -> (Bool, [Dart])
+isPossible _ 0 _ = (True, [])
+isPossible x y darts | x == 3 = (False, [])
+                     | outcome = 
+                     where (outcome, accum) = isPossible (x+1) 
 
-generatePossScores :: [Dart String Int]
-generatePossScores = (removeDups . quicksort) (map (Dart "single") [1..20]
-                   ++ map (Dart "double") [1..20]
-                   ++ map (Dart "triple") [1..20])
+generatePossScores :: [Dart]
+generatePossScores = (removeDups . quicksort) (map (\x -> ("single", x)) [1..20]
+                   ++ map (\x -> ("double", x)) [1..20]
+                   ++ map (\x -> ("triple", x)) [1..20])
 
-value :: Dart String Int -> Int
-value (Dart x y) | x == "single" = y
-                 | x == "double" = 2 * y
-                 | otherwise = 3 * y
+value :: Dart -> Int
+value (x, y) | x == "single" = y
+             | x == "double" = 2 * y
+             | otherwise = 3 * y
 
-quicksort :: [Dart String Int] -> [Dart String Int]
+quicksort :: [Dart] -> [Dart]
 quicksort [] = []
-quicksort (x:xs) = quicksort [y | y <- xs, value (y) < value (x)]
-                 ++ (x : quicksort [y | y <- xs, value (y) >= value (x)])
+quicksort (x:xs) = quicksort [y | y <- xs, value y < value x]
+                 ++ (x : quicksort [y | y <- xs, value y >= value x])
 
-removeDups :: [Dart String Int] -> [Dart String Int]
+removeDups :: [Dart] -> [Dart]
 removeDups [] = []
 removeDups (x:[]) = x:[]
-removeDups (x:y:xs) | value (x) == value (y) = removeDups (x:xs)
+removeDups (x:y:xs) | value x == value y = removeDups (x:xs)
                     | otherwise = x:removeDups (y:xs)
-
-instance Show (Dart String Int) where
-    show (Dart x y) = show x ++ " " ++ show y

@@ -4,4 +4,5 @@
 
 ## My Thoughts
 
-- I'm just going to generate possible values and then search that
+- I'm going to generate all the possible single dart scores
+- Then I'll check if a combo of these darts can produce the necessary score
