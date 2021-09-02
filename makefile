@@ -1,4 +1,4 @@
-PROBLEM=calculatingdartscores
+PROBLEM=yoda
 
 create-c:
 	mkdir --parents $(PROBLEM)
