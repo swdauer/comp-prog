@@ -1,4 +1,4 @@
-PROBLEM=yoda
+PROBLEM=pebblesolitaire
 
 create-c:
 	mkdir --parents $(PROBLEM)
