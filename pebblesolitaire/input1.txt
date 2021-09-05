@@ -1,6 +1,12 @@
-5
+10
 ---oo-------
 -o--o-oo----
 -o----ooo---
 oooooooooooo
 oooooooooo-o
+---oooo-----
+oo-o---oo-oo
+-o-o-o-o-oo-
+ooo-ooo-ooo-
+o-oo-oo-oo-o
+

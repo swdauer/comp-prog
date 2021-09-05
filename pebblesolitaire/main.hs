@@ -1,7 +1,9 @@
 module Main where
 
 readInput :: String -> [String]
-readInput = tail . lines
+readInput s = take n (tail l)
+            where l = lines s
+                  n = (read . head) l
 
 writeOutput :: [Int] -> String
 writeOutput = unlines . map show
@@ -29,7 +31,8 @@ findMin min (x:xs) | curr == 1 = 1
                    where curr = pebbleCount x
 
 descendants :: String -> [String]
+descendants (x:[]) = (x:""):[]
 descendants (x:y:[]) = (x:y:""):[]
-descendants ('o':'o':'-':xs) = ('-':'-':'o':xs):((map (\v -> 'o':'o':v) . descendants) ('-':xs))
+descendants ('o':'o':'-':xs) = ('-':'-':'o':xs):((map ('o':) . descendants) ('o':'-':xs))
 descendants ('-':'o':'o':xs) = ('o':'-':'-':xs):((map ('-':) . descendants) ('o':'o':xs))
 descendants (x:y:z:xs) = (map (x:) . descendants) (y:z:xs)
