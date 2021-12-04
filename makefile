@@ -1,4 +1,4 @@
-PROBLEM=pebblesolitaire
+PROBLEM=bank
 
 create-c:
 	mkdir --parents $(PROBLEM)
