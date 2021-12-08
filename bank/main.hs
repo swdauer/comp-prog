@@ -7,9 +7,9 @@ readInput = map (\x -> (twoElemListToPair . words) x) . lines
 twoElemListToPair :: [String] -> (Integer, Integer)
 twoElemListToPair [x,y] = (read x, read y)
 
-solve :: [(Integer, Integer)] -> Integer
+solve :: [(Integer, Integer)] -> String
 solve (x:xs) = let zs = sort xs
-               in findBest 0 (snd x) 0 zs
+               in show (findBest 0 (snd x) 0 zs)
 
 sort :: [(Integer, Integer)] -> [(Integer, Integer)]
 sort [] = []
@@ -17,8 +17,8 @@ sort (x:xs) = sort [y | y <- xs, snd y < snd x || (snd y == snd x && fst y > fst
             ++ [x]
             ++ sort [y | y <- xs, snd y > snd x || (snd y == snd x && fst y <= fst x)]
 
-writeOutput :: Integer -> String
-writeOutput x = shows x "\n"
+writeOutput :: String -> String
+writeOutput x = x ++ "\n"
 
 -- parameters:
 --  current time
