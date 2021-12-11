@@ -1,4 +1,4 @@
-PROBLEM=firestation
+PROBLEM=doggopher
 
 create-c:
 	mkdir --parents $(PROBLEM)
