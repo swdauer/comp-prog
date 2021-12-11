@@ -1,4 +1,4 @@
-PROBLEM=bank
+PROBLEM=firestation
 
 create-c:
 	mkdir --parents $(PROBLEM)
