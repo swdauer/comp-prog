@@ -26,9 +26,16 @@ determineIfEscape _ _ [] = ("The gopher cannot escape." ++)
 determineIfEscape (xg, yg) (xd, yd) ((xh, yh):points) | 4 * ((xg - xh)^2 + (yg - yh)^2)
                                                         <= (xd - xh)^2 + (yd - yh)^2
                                                         = ("The gopher can escape through the hole at (" ++)
-                                                          . shows (div xh 1000) . ('.':) . shows (mod xh 1000) . (',':)
-                                                          . shows (div yh 1000) . ('.':) . shows (mod yh 1000) . (")." ++)
+                                                          . showsCoordinate xh . (',':)
+                                                          . showsCoordinate yh . (")." ++)
                                                       | otherwise = determineIfEscape (xg, yg) (xd, yd) points
+
+showsCoordinate :: Integer -> ShowS
+showsCoordinate x | length postDecimal == 1 = prefixShows . ('0':) . ('0':) . (postDecimal ++)
+                  | length postDecimal == 2 = prefixShows . ('0':) . (postDecimal ++)
+                  | otherwise = prefixShows . (postDecimal ++)
+                  where postDecimal = show (mod x 1000)
+                        prefixShows = shows (div x 1000) . ('.':)
 
 writeOutput :: ShowS -> String
 writeOutput s = s "\n"
