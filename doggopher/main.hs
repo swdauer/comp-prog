@@ -18,7 +18,9 @@ parseInput False (line:input) = let [x, y] = map (decimalToInteger id) (words li
                                 in (x, y):parseInput False input
 
 decimalToInteger :: (String -> String) -> String -> Integer
-decimalToInteger beginning ('.':rest) = 1000 * (read . beginning) "" + read rest
+decimalToInteger beginning ('.':rest) | beginningNum < 0 = 1000 * beginningNum - read rest
+                                      | otherwise = 1000 * beginningNum + read rest
+                                      where beginningNum = (read . beginning) ""
 decimalToInteger beginning (x:rest)   = decimalToInteger (beginning . (x :)) rest
 
 determineIfEscape :: (Integer, Integer) -> (Integer, Integer) -> [(Integer, Integer)] -> ShowS
@@ -31,7 +33,8 @@ determineIfEscape (xg, yg) (xd, yd) ((xh, yh):points) | 4 * ((xg - xh)^2 + (yg -
                                                       | otherwise = determineIfEscape (xg, yg) (xd, yd) points
 
 showsCoordinate :: Integer -> ShowS
-showsCoordinate x | length postDecimal == 1 = prefixShows . ('0':) . ('0':) . (postDecimal ++)
+showsCoordinate x | null postDecimal = prefixShows . ("000" ++)
+                  | length postDecimal == 1 = prefixShows . ('0':) . ('0':) . (postDecimal ++)
                   | length postDecimal == 2 = prefixShows . ('0':) . (postDecimal ++)
                   | otherwise = prefixShows . (postDecimal ++)
                   where postDecimal = show (mod x 1000)
