@@ -1,4 +1,4 @@
-PROBLEM=doggopher
+PROBLEM=soundex
 
 create-c:
 	mkdir --parents $(PROBLEM)
