@@ -11,3 +11,5 @@
             - If so, add 1 to the count
     2. Return the total number of constructable primes
 3. Print all the cases' answers
+
+Looks like this approach is too long, unless there is a way to speed up my sieving process
