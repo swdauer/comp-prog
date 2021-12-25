@@ -18,4 +18,18 @@ There is by using an iterating integer to remove elements instead of checking mo
 
 Even with the improved sieve method it's still too slow.
 
+### Attempt 2
+
 So now I'll do a method of permuting the string, checking if each permutation is prime, and memoizing the results.
+
+1. Iterate over cases
+    1. Generate permutations
+    2. Iterate of permutations
+        1. Check if permutation is prime
+        2. If it is, add one to count
+    3. Add count to output
+2. Output list of counts
+
+I'll need to memoize which numbers are prime.
+
+I'll check if a number is prime by iterating up to the square root of the number.
