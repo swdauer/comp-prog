@@ -33,3 +33,7 @@ So now I'll do a method of permuting the string, checking if each permutation is
 I'll need to memoize which numbers are prime.
 
 I'll check if a number is prime by iterating up to the square root of the number.
+
+Using an array with incremental updates as my memoization structure is slow. Try using a different structure.
+
+Perhaps accumArray, perhaps Data.Map.Strict
