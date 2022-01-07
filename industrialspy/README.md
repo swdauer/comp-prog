@@ -37,3 +37,5 @@ I'll check if a number is prime by iterating up to the square root of the number
 Using an array with incremental updates as my memoization structure is slow. Try using a different structure.
 
 Perhaps accumArray, perhaps Data.Map.Strict. Switching to Data.Array.IO
+
+My solution was accepted but it is the slowest haskell solution for this problem. I could speed it up by refactoring and by changing the array type I'm using.
