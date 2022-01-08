@@ -1,6 +1,7 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Main where
 
-import           Data.Char (isLetter)
+import           Data.Char (isLetter, toUpper)
 
 main = print 3
 
@@ -38,4 +39,24 @@ idxRight (x, y) | y == 0 = (x, 4)
 idxBelow (x, y) | x == 0 = (4, y)
                 | otherwise = (x-1, y)
 
-accessTable (x, y) table = table !! x !! y
+accessTable table (x, y) = table !! x !! y
+
+removeNonLetters [] = []
+removeNonLetters (c:cs) | isLetter c = c : removeNonLetters cs
+                        | otherwise = removeNonLetters cs
+
+-- the input must only be letters
+digraphs [] = []
+digraphs [c] | isLetter c = [c:'x':""]
+                | otherwise = []
+digraphs (c:c':cs) | c == c' = (c:'x':"") : digraphs (c':cs)
+                   | otherwise = (c:c':"") : digraphs cs
+
+encryptDigraph table [a,b] | rowA == rowB = [toUpper $ accessTable table (idxRight (rowA, colA)),
+                                             toUpper $ accessTable table (idxRight (rowB, colB))]
+                           | colA == colB = [toUpper $ accessTable table (idxBelow (rowA, colA)),
+                                             toUpper $ accessTable table (idxBelow (rowB, colB))]
+                           | otherwise = [toUpper $ accessTable table (rowA, colB),
+                                          toUpper $ accessTable table (rowB, colA)]
+                        where (rowA, colA) = tableCoord table a
+                              (rowB, colB) = tableCoord table b
