@@ -1,4 +1,4 @@
-PROBLEM=industrialspy
+PROBLEM=playfair
 
 create-hs:
 	mkdir --parents $(PROBLEM)
