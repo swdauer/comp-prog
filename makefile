@@ -1,4 +1,4 @@
-PROBLEM=playfair
+PROBLEM=polygonarea
 
 create-hs:
 	mkdir --parents $(PROBLEM)
