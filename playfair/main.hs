@@ -3,11 +3,10 @@ module Main where
 
 import           Data.Char (isLetter, toUpper)
 
-main = print 3
-
--- constructTable table [] = table
--- constructTable table (s:ss) | not (isLetter s) || s `inTable` table = constructTable table ss
---                             | otherwise = constructTable (addToTable s table) ss
+main = do keyPhrase <- getLine
+          let table = constructFullTable keyPhrase
+          payload <- getLine
+          putStrLn . concatMap (encryptDigraph table) . digraphs . removeNonLetters $ payload
 
 constructTable :: [Char] -> [[Char]]
 constructTable = foldl (\table c -> if not (isLetter c) || c `inTable` table
@@ -52,11 +51,11 @@ digraphs [c] | isLetter c = [c:'x':""]
 digraphs (c:c':cs) | c == c' = (c:'x':"") : digraphs (c':cs)
                    | otherwise = (c:c':"") : digraphs cs
 
-encryptDigraph table [a,b] | rowA == rowB = [toUpper $ accessTable table (idxRight (rowA, colA)),
-                                             toUpper $ accessTable table (idxRight (rowB, colB))]
-                           | colA == colB = [toUpper $ accessTable table (idxBelow (rowA, colA)),
-                                             toUpper $ accessTable table (idxBelow (rowB, colB))]
-                           | otherwise = [toUpper $ accessTable table (rowA, colB),
-                                          toUpper $ accessTable table (rowB, colA)]
-                        where (rowA, colA) = tableCoord table a
-                              (rowB, colB) = tableCoord table b
+encryptDigraph table (a:b:"") | rowA == rowB = [toUpper $ accessTable table (idxRight (rowA, colA)),
+                                                toUpper $ accessTable table (idxRight (rowB, colB))]
+                              | colA == colB = [toUpper $ accessTable table (idxBelow (rowA, colA)),
+                                                toUpper $ accessTable table (idxBelow (rowB, colB))]
+                              | otherwise = [toUpper $ accessTable table (rowA, colB),
+                                             toUpper $ accessTable table (rowB, colA)]
+                            where (rowA, colA) = tableCoord table a
+                                  (rowB, colB) = tableCoord table b
