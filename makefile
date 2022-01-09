@@ -1,4 +1,4 @@
-PROBLEM=polygonarea
+PROBLEM=incognito
 
 create-hs:
 	mkdir --parents $(PROBLEM)
