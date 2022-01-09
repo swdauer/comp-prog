@@ -1,4 +1,4 @@
-PROBLEM=incognito
+PROBLEM=marblestree
 
 create-hs:
 	mkdir --parents $(PROBLEM)
