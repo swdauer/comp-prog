@@ -21,3 +21,13 @@ For each leaf:
 2. Add number of marbles - 1 to parents marbles
 3. Add parent to leaves if 0 children now
 4. Return number of moves
+
+### Reflection
+
+When working with tree problems, I should look for ways to traverse without using generic graph traversals.
+
+The key here was to traverse up from the leaves, accumulating marbles and marble debts along the way.
+
+Queues can be implemented with 2 lists.
+
+Perhaps I could have stored the program state in a tuple of IOUArrays.
