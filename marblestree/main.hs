@@ -16,10 +16,11 @@ main = do
                                              nChildren
                                              nMarbles
                                              q) ([], []) ls
-        readArray parents 9 >>= print
         readArray nChildren 4 >>= print
-        readArray nMarbles 8 >>= print
-        print queue
+        readArray nMarbles 4 >>= print
+        (q, count) <- removeVertex 8 4 nChildren nMarbles queue
+        readArray nChildren 4 >>= print
+        readArray nMarbles 4 >>= print
 
 type Queue = ([Int], [Int])
 
@@ -40,3 +41,19 @@ parseLine line parents nChildren nMarbles leaves = do
     if pieces !! 2 == 0
         then return $ insert vertexNum leaves
         else return leaves
+
+removeVertex :: Int -> Int
+                -> IOUArray Int Int -> IOUArray Int Int
+                -> Queue -> IO (Queue, Int)
+removeVertex vertex parent nChildren nMarbles leaves = do
+    -- remove child from parent
+    parentChildren <- readArray nChildren parent
+    writeArray nChildren parent (parentChildren - 1)
+    -- add (marbles - 1) from child to parent
+    childMarbles <- readArray nMarbles vertex
+    parentMarbles <- readArray nMarbles parent
+    writeArray nMarbles parent (parentMarbles + childMarbles - 1)
+    return (if parentChildren == 1
+                then insert parent leaves
+                else leaves,
+            abs(childMarbles-1))

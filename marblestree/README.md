@@ -15,3 +15,9 @@ For each case I need to maintain
 - an array of number of children
 - an array of number of marbles
 - a queue of leaves
+
+For each leaf:
+1. Remove 1 from parents children count
+2. Add number of marbles - 1 to parents marbles
+3. Add parent to leaves if 0 children now
+4. Return number of moves
