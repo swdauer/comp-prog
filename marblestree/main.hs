@@ -16,11 +16,14 @@ main = do
                                              nChildren
                                              nMarbles
                                              q) ([], []) ls
-        readArray nChildren 4 >>= print
-        readArray nMarbles 4 >>= print
-        (q, count) <- removeVertex 8 4 nChildren nMarbles queue
-        readArray nChildren 4 >>= print
-        readArray nMarbles 4 >>= print
+        -- readArray nChildren 4 >>= print
+        -- readArray nMarbles 4 >>= print
+        -- (q, count) <- removeVertex 8 4 nChildren nMarbles queue
+        -- readArray nChildren 4 >>= print
+        -- readArray nMarbles 4 >>= print
+        -- print count
+        recurUntilRoot parents nChildren nMarbles queue >>= print
+        main
 
 type Queue = ([Int], [Int])
 
@@ -57,3 +60,15 @@ removeVertex vertex parent nChildren nMarbles leaves = do
                 then insert parent leaves
                 else leaves,
             abs(childMarbles-1))
+
+recurUntilRoot :: IOUArray Int Int -> IOUArray Int Int
+                  -> IOUArray Int Int -> Queue
+                  -> IO Int
+recurUntilRoot parents nChildren nMarbles leaves = do
+    let (queue, top) = pop leaves
+    parent <- readArray parents top
+    if parent == 0 then return 0
+        else do
+            (newQueue, count) <- removeVertex top parent nChildren nMarbles queue
+            recurCount <- recurUntilRoot parents nChildren nMarbles newQueue
+            return (count+recurCount)
