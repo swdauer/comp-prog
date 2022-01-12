@@ -9,9 +9,8 @@ main = do
     charCounts <- newArray ('a', 'z') 0 :: IO CharMap
     mapM_ (addToCount charCounts) toEncode
     listCounts <- charMapToList charCounts
-    -- testing below here
-    -- mapM_ (\c -> putChar c >> putChar ' ' >> readArray charCounts c >>= print) ['a'..'z']
     let sortedCounts = reverse . sort $ listCounts
+    -- testing below here
     print listCounts >> print sortedCounts
 
 addToCount :: CharMap -> Char -> IO ()
@@ -22,4 +21,12 @@ addToCount charMap c | isLetter c = do
                      | otherwise = return ()
 
 charMapToList :: CharMap -> IO [Int]
-charMapToList charMap = mapM (readArray charMap) ['a'..'z']
+charMapToList charMap = mapM (readArray charMap) $ range ('a', 'z')
+
+numberOfSequencesNDotsWide :: Int -> Int
+numberOfSequencesNDotsWide 1 = 1
+numberOfSequencesNDotsWide 2 = 2
+numberOfSequencesNDotsWide n = numberOfSequencesNDotsWide (n-1) + numberOfSequencesNDotsWide (n-2)
+
+lengthOfSequences :: [Int]
+lengthOfSequences = take 26 ([2*x - 1 | x <- concat [replicate (numberOfSequencesNDotsWide y) y | y <- [1..]]])
