@@ -10,8 +10,10 @@ main = do
     mapM_ (addToCount charCounts) toEncode
     listCounts <- charMapToList charCounts
     let sortedCounts = reverse . sort $ listCounts
+        zippedCountsAndLengths = zip sortedCounts lengthOfSequences
     -- testing below here
-    print listCounts >> print sortedCounts
+    print $ foldl (\total (count, len) -> total + count*len + count*3) 0 zippedCountsAndLengths - 3
+    -- print listCounts >> print sortedCounts >> print zippedCountsAndLengths
 
 addToCount :: CharMap -> Char -> IO ()
 addToCount charMap c | isLetter c = do
