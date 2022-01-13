@@ -1,4 +1,4 @@
-PROBLEM=remorse
+PROBLEM=allaboutthatbase
 
 create-hs:
 	mkdir --parents $(PROBLEM)
