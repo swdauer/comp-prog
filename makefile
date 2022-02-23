@@ -1,4 +1,4 @@
-PROBLEM=allaboutthatbase
+PROBLEM=digitswap
 
 create-hs:
 	mkdir --parents $(PROBLEM)
