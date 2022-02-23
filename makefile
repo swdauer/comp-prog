@@ -1,4 +1,4 @@
-PROBLEM=digitswap
+PROBLEM=heimavinna
 
 create-hs:
 	mkdir --parents $(PROBLEM)
