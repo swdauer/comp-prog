@@ -1,4 +1,4 @@
-PROBLEM=nsum
+PROBLEM=magictrick
 
 create-hs:
 	mkdir --parents $(PROBLEM)
