@@ -1,4 +1,4 @@
-PROBLEM=ratingproblems
+PROBLEM=nsum
 
 create-hs:
 	mkdir --parents $(PROBLEM)
