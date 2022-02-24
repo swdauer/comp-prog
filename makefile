@@ -1,4 +1,4 @@
-PROBLEM=jackolanternjuxtaposition
+PROBLEM=isithalloween
 
 create-hs:
 	mkdir --parents $(PROBLEM)
