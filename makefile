@@ -1,4 +1,4 @@
-PROBLEM=grading
+PROBLEM=gcvwr
 
 create-hs:
 	mkdir --parents $(PROBLEM)
