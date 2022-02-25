@@ -1,4 +1,4 @@
-PROBLEM=greetings2
+PROBLEM=echoechoecho
 
 create-hs:
 	mkdir --parents $(PROBLEM)
