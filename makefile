@@ -1,4 +1,4 @@
-PROBLEM=gcvwr
+PROBLEM=fyi
 
 create-hs:
 	mkdir --parents $(PROBLEM)
