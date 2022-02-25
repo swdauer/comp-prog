@@ -1,4 +1,4 @@
-PROBLEM=heartrate
+PROBLEM=greetings2
 
 create-hs:
 	mkdir --parents $(PROBLEM)
