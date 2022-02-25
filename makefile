@@ -1,4 +1,4 @@
-PROBLEM=dicecup
+PROBLEM=chanukah
 
 create-hs:
 	mkdir --parents $(PROBLEM)
