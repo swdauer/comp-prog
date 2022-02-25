@@ -1,4 +1,4 @@
-PROBLEM=findingana
+PROBLEM=eyeofsauron
 
 create-hs:
 	mkdir --parents $(PROBLEM)
