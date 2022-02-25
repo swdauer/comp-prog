@@ -1,4 +1,4 @@
-PROBLEM=echoechoecho
+PROBLEM=grading
 
 create-hs:
 	mkdir --parents $(PROBLEM)
