@@ -1,4 +1,4 @@
-PROBLEM=smil
+PROBLEM=transitwoes
 
 create-hs:
 	mkdir --parents $(PROBLEM)
