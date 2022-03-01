@@ -1,4 +1,4 @@
-PROBLEM=relocation
+PROBLEM=kornislav
 
 create-hs:
 	mkdir --parents $(PROBLEM)
