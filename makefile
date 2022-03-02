@@ -1,4 +1,4 @@
-PROBLEM=kornislav
+PROBLEM=knotknowledge
 
 create-hs:
 	mkdir --parents $(PROBLEM)
