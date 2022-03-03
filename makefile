@@ -1,4 +1,4 @@
-PROBLEM=knotknowledge
+PROBLEM=ultimatebinarywatch
 
 create-hs:
 	mkdir --parents $(PROBLEM)
