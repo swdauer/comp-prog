@@ -1,4 +1,4 @@
-PROBLEM=ultimatebinarywatch
+PROBLEM=encodedmessage
 
 create-hs:
 	mkdir --parents $(PROBLEM)
