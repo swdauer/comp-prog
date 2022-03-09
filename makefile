@@ -1,4 +1,4 @@
-PROBLEM=encodedmessage
+PROBLEM=cudoviste
 
 create-hs:
 	mkdir --parents $(PROBLEM)
