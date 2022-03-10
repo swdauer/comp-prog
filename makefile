@@ -1,4 +1,4 @@
-PROBLEM=cudoviste
+PROBLEM=alphabetspam
 
 create-hs:
 	mkdir --parents $(PROBLEM)
