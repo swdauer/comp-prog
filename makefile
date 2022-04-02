@@ -1,4 +1,4 @@
-PROBLEM=betting
+PROBLEM=sumsquareddigits
 
 hs:
 	mkdir --parents $(PROBLEM)
