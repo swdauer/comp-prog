@@ -1,4 +1,4 @@
-PROBLEM=sumsquareddigits
+PROBLEM=railroad2
 
 hs:
 	mkdir --parents $(PROBLEM)
