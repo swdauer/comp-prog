@@ -1,4 +1,4 @@
-PROBLEM=railroad2
+PROBLEM=numberfun
 
 hs:
 	mkdir --parents $(PROBLEM)
