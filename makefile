@@ -1,4 +1,4 @@
-PROBLEM=numberfun
+PROBLEM=lostlineup
 
 hs:
 	mkdir --parents $(PROBLEM)
