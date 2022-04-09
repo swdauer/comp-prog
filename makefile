@@ -1,4 +1,4 @@
-PROBLEM=lostlineup
+PROBLEM=freefood
 
 hs:
 	mkdir --parents $(PROBLEM)
