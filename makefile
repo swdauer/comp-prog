@@ -1,4 +1,4 @@
-PROBLEM=freefood
+PROBLEM=eligibility
 
 hs:
 	mkdir --parents $(PROBLEM)
