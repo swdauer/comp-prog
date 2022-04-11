@@ -1,4 +1,4 @@
-PROBLEM=eligibility
+PROBLEM=coconut
 
 hs:
 	mkdir --parents $(PROBLEM)
