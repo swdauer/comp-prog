@@ -1,4 +1,4 @@
-PROBLEM=coconut
+PROBLEM=breakingbranches
 
 hs:
 	mkdir --parents $(PROBLEM)
