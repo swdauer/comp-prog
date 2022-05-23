@@ -1,4 +1,4 @@
-PROBLEM=breakingbranches
+PROBLEM=rationalsequence2
 
 hs:
 	mkdir --parents $(PROBLEM)
