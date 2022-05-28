@@ -1,4 +1,4 @@
-PROBLEM=rationalsequence2
+PROBLEM=karte
 
 py:
 	mkdir --parents $(PROBLEM)
