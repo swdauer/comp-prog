@@ -1,4 +1,4 @@
-PROBLEM=karte
+PROBLEM=dicegame
 
 py:
 	mkdir --parents $(PROBLEM)
