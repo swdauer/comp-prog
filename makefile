@@ -1,4 +1,11 @@
-PROBLEM=dicegame
+PROBLEM=rationalsequence2
+
+c:
+	mkdir --parents $(PROBLEM)
+	touch $(PROBLEM)/main.c
+	cp --no-clobber makefile-template-c $(PROBLEM)/makefile
+	touch $(PROBLEM)/input1
+
 
 py:
 	mkdir --parents $(PROBLEM)
